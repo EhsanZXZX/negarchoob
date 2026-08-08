@@ -1321,3 +1321,526 @@ a.channel-value:hover { color: var(--walnut); border-color: var(--walnut); }
 @media print {
     .wa-pop { display: none !important; }
 }
+
+/* ==========================================================================
+   19. ROYAL PALACE — case page
+   Scoped to project-royalpalace.html. Every selector is prefixed `.rp-`,
+   so nothing here can reach the shared components above.
+   ========================================================================== */
+
+/* --- 19.1 Hero ----------------------------------------------------------- */
+.rp-hero {
+    position: relative;
+    min-block-size: 100svh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: var(--ink);
+}
+.rp-hero-media { position: absolute; inset: 0; z-index: 0; }
+.rp-hero-media video {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+}
+/* Two scrims: one lifts the type off the floor, one protects the nav.
+   Kept light — the photograph, not the overlay, should carry the frame. */
+.rp-hero::after {
+    content: '';
+    position: absolute; inset: 0; z-index: 1;
+    background:
+        linear-gradient(to top, rgba(12, 9, 7, 0.82) 0%, rgba(12, 9, 7, 0.20) 48%, rgba(12, 9, 7, 0.52) 100%),
+        linear-gradient(to left, rgba(12, 9, 7, 0.34) 0%, transparent 42%);
+}
+
+.rp-hero-inner {
+    position: relative;
+    z-index: 2;
+    inline-size: 100%;
+    padding: 0 var(--gutter) clamp(5.5rem, 11vw, 9rem);
+    color: #fff;
+}
+
+.rp-hero-eyebrow {
+    display: block;
+    font-size: var(--micro);
+    letter-spacing: 0.34em;
+    color: var(--brass);
+    margin-bottom: clamp(1.2rem, 2.4vw, 2rem);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 900ms var(--ease) 200ms, transform 900ms var(--ease) 200ms;
+}
+.rp-hero.is-in .rp-hero-eyebrow { opacity: 1; transform: none; }
+
+.rp-hero-title {
+    font-size: clamp(2.05rem, 7.6vw, 6.6rem);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1.04;
+    text-transform: uppercase;
+    text-wrap: balance;
+}
+/* Each word is its own mask, so the line rises in three beats, not one. */
+.rp-hero-title .rp-word { display: inline-block; overflow: hidden; vertical-align: bottom; }
+.js .rp-hero-title .rp-word > span {
+    display: block;
+    transform: translateY(112%);
+    transition: transform 1150ms var(--ease-slow);
+    transition-delay: calc(var(--i, 0) * 130ms + 260ms);
+}
+.rp-hero.is-in .rp-hero-title .rp-word > span { transform: none; }
+
+.rp-hero-rule {
+    display: block;
+    inline-size: 0;
+    block-size: 1px;
+    background: var(--brass);
+    margin-block: clamp(1.6rem, 3.4vw, 2.6rem);
+    transition: inline-size 1400ms var(--ease-slow) 780ms;
+}
+.rp-hero.is-in .rp-hero-rule { inline-size: min(230px, 46vw); }
+
+.rp-hero-sub {
+    font-size: clamp(1rem, 2.1vw, 1.45rem);
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 30ch;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 1000ms var(--ease) 900ms, transform 1000ms var(--ease) 900ms;
+}
+.rp-hero.is-in .rp-hero-sub { opacity: 1; transform: none; }
+
+.rp-hero-pause {
+    position: absolute;
+    z-index: 3;
+    inset-block-end: clamp(1.6rem, 3vw, 2.6rem);
+    inset-inline-start: var(--gutter);
+}
+
+.rp-scroll-cue {
+    position: absolute;
+    z-index: 3;
+    inset-block-end: 0;
+    inset-inline-end: var(--gutter);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+    padding-block-end: 0;
+    color: rgba(255, 255, 255, 0.72);
+    opacity: 0;
+    transition: opacity 900ms var(--ease) 1400ms, color var(--dur) var(--ease);
+}
+.rp-hero.is-in .rp-scroll-cue { opacity: 1; }
+.rp-scroll-cue:hover { color: #fff; }
+.rp-scroll-cue-label { font-size: 0.6rem; letter-spacing: 0.3em; }
+.rp-scroll-cue-line {
+    position: relative;
+    inline-size: 1px;
+    block-size: clamp(3.5rem, 7vw, 5.5rem);
+    background: rgba(255, 255, 255, 0.22);
+    overflow: hidden;
+}
+.rp-scroll-cue-line::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    block-size: 42%;
+    background: var(--brass);
+    animation: rp-cue 2600ms var(--ease-slow) infinite;
+}
+@keyframes rp-cue {
+    0%   { transform: translateY(-110%); }
+    55%  { transform: translateY(240%); }
+    100% { transform: translateY(240%); }
+}
+
+@media (max-width: 700px) {
+    .rp-hero { min-block-size: 88svh; }
+    .rp-hero-inner { padding-block-end: clamp(6rem, 16vw, 8rem); }
+    .rp-scroll-cue { display: none; }
+}
+
+/* --- 19.2 Intro (editorial) ---------------------------------------------- */
+.rp-intro { padding-block: var(--section-y) clamp(3rem, 7vw, 6rem); }
+
+.rp-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 8vw, 8rem);
+    align-items: start;
+}
+.rp-statement {
+    font-size: var(--statement);
+    font-weight: 300;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    max-width: 17ch;
+}
+.rp-intro-read p {
+    font-size: var(--body-lg);
+    line-height: 2.1;
+    color: var(--ink-soft);
+    margin-bottom: 1.6rem;
+    max-width: 52ch;
+}
+.rp-role { list-style: none; margin-block: 2.4rem 2rem; }
+.rp-role li {
+    position: relative;
+    padding-inline-start: 1.6rem;
+    padding-block: 0.55rem;
+    color: var(--ink-soft);
+    line-height: 1.9;
+    border-block-start: 1px solid var(--line-soft);
+}
+.rp-role li:last-child { border-block-end: 1px solid var(--line-soft); }
+.rp-role li::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0; inset-block-start: 1.4em;
+    inline-size: 0.6rem; block-size: 1px;
+    background: var(--walnut);
+}
+.rp-note { font-size: var(--small) !important; color: var(--ink-faint) !important; }
+
+.rp-intro-figure { margin-block-start: clamp(3.5rem, 8vw, 7rem); }
+
+@media (max-width: 900px) {
+    .rp-intro-grid { grid-template-columns: 1fr; gap: clamp(1.8rem, 6vw, 3rem); }
+    .rp-statement { max-width: 22ch; }
+}
+
+/* --- 19.3 Frames --------------------------------------------------------- */
+.rp-fig { margin: 0; }
+.rp-fig--bleed { margin-block: clamp(3.5rem, 9vw, 8rem); }
+.rp-fig--drop { margin-block-start: clamp(2.5rem, 10vw, 10rem); }
+
+.rp-frame {
+    position: relative;
+    display: block;
+    inline-size: 100%;
+    aspect-ratio: var(--ar, 16 / 9);
+    overflow: hidden;
+    background: var(--ivory-alt);
+    border: 0;
+    padding: 0;
+    cursor: zoom-in;
+    -webkit-tap-highlight-color: transparent;
+    --sc: 1;
+}
+/* Reveal: the frame itself unmasks upward while the photograph settles
+   out of its oversize. Two motions, one gesture. */
+.js .rp-frame {
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 1250ms var(--ease-slow);
+    --sc: 1.07;
+}
+.js .rp-fig.is-visible .rp-frame { clip-path: inset(0 0 0 0); --sc: 1; }
+
+.rp-frame img {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: var(--pos, center);
+    /* --par is written by the parallax loop; --sc by reveal + hover. */
+    transform: translate3d(0, var(--par, 0px), 0) scale(var(--sc));
+    transition: transform 1400ms var(--ease-slow), filter 900ms var(--ease);
+    will-change: transform;
+}
+
+.rp-frame-veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(18, 13, 9, 0.66) 0%, rgba(18, 13, 9, 0.12) 52%, transparent 100%);
+    opacity: 0;
+    transition: opacity 750ms var(--ease);
+    pointer-events: none;
+}
+.rp-frame-cue {
+    position: absolute;
+    z-index: 2;
+    inset-block-end: clamp(1.1rem, 2.4vw, 2.1rem);
+    inset-inline-start: clamp(1.1rem, 2.4vw, 2.1rem);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #fff;
+    font-size: var(--micro);
+    letter-spacing: 0.1em;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 620ms var(--ease), transform 720ms var(--ease-slow);
+    pointer-events: none;
+}
+.rp-frame-cue-ico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 2.6rem;
+    block-size: 2.6rem;
+    border: 1px solid rgba(199, 161, 90, 0.75);
+    border-radius: 50%;
+    flex: none;
+}
+.rp-frame-cue-ico svg { inline-size: 14px; block-size: 14px; stroke: var(--brass); fill: none; stroke-width: 1.5; }
+
+/* Brass rule wipes in along the base — the smallest possible "this is live". */
+.rp-frame::after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    inset-inline: 0;
+    inset-block-end: 0;
+    block-size: 2px;
+    background: var(--brass);
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 950ms var(--ease-slow);
+}
+
+.rp-frame:hover,
+.rp-frame:focus-visible { --sc: 1.055; }
+.js .rp-fig.is-visible .rp-frame:hover,
+.js .rp-fig.is-visible .rp-frame:focus-visible { --sc: 1.055; }
+.rp-frame:hover .rp-frame-veil,
+.rp-frame:focus-visible .rp-frame-veil { opacity: 1; }
+.rp-frame:hover .rp-frame-cue,
+.rp-frame:focus-visible .rp-frame-cue { opacity: 1; transform: none; }
+.rp-frame:hover::after,
+.rp-frame:focus-visible::after { transform: scaleX(1); }
+
+.rp-cap {
+    display: flex;
+    align-items: baseline;
+    gap: 1.1rem;
+    margin-block-start: 1.1rem;
+}
+.rp-cap-num { font-size: var(--micro); letter-spacing: 0.2em; color: var(--walnut); flex: none; }
+.rp-cap p { font-size: var(--small); line-height: 1.8; color: var(--ink-faint); }
+
+/* --- 19.4 Gallery -------------------------------------------------------- */
+.rp-gallery { padding-block-end: clamp(3rem, 7vw, 6rem); }
+.rp-gallery-head { margin-block-end: clamp(2.5rem, 6vw, 4.5rem); }
+
+.rp-pair {
+    display: grid;
+    grid-template-columns: 0.84fr 1.16fr;
+    gap: clamp(1.6rem, 4.5vw, 4.5rem);
+    align-items: start;
+}
+@media (max-width: 860px) {
+    .rp-pair { grid-template-columns: 1fr; gap: clamp(2rem, 8vw, 3.5rem); }
+    .rp-fig--drop { margin-block-start: 0; }
+}
+
+/* --- 19.5 Film ----------------------------------------------------------- */
+.rp-film {
+    background: var(--ink);
+    color: var(--ivory);
+    padding-block: var(--section-y);
+}
+.rp-film-head { margin-block-end: clamp(2.5rem, 6vw, 4.5rem); }
+.rp-film-head .kicker { color: var(--ivory); }
+
+.rp-film-stage {
+    position: relative;
+    inline-size: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #000;
+}
+.rp-film-stage video { inline-size: 100%; block-size: 100%; object-fit: cover; }
+
+.rp-film-play,
+.rp-film-full {
+    position: absolute;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(199, 161, 90, 0.6);
+    border-radius: 50%;
+    color: var(--brass);
+    background: rgba(12, 9, 7, 0.42);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease),
+                color var(--dur) var(--ease), transform 700ms var(--ease-slow);
+}
+.rp-film-play:hover,
+.rp-film-full:hover { background: var(--brass); border-color: var(--brass); color: var(--ink); }
+
+/* Big and centred while paused; small and cornered once it is running. */
+.rp-film-play {
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    inline-size: clamp(4.5rem, 9vw, 6.5rem);
+    block-size: clamp(4.5rem, 9vw, 6.5rem);
+    transform: translate(50%, -50%);
+}
+.rp-film-play svg { inline-size: 22%; block-size: 22%; fill: currentColor; stroke: none; }
+.rp-film-play .ico-pause { display: none; }
+.rp-film-stage.is-playing .rp-film-play {
+    inset-block-start: auto;
+    inset-block-end: clamp(1rem, 2.2vw, 1.8rem);
+    inset-inline-start: clamp(1rem, 2.2vw, 1.8rem);
+    inline-size: 46px;
+    block-size: 46px;
+    transform: none;
+    opacity: 0;
+}
+.rp-film-stage.is-playing:hover .rp-film-play,
+.rp-film-stage.is-playing .rp-film-play:focus-visible { opacity: 1; }
+.rp-film-stage.is-playing .rp-film-play svg { inline-size: 13px; block-size: 13px; }
+.rp-film-stage.is-playing .rp-film-play .ico-play  { display: none; }
+.rp-film-stage.is-playing .rp-film-play .ico-pause { display: block; }
+
+.rp-film-full {
+    inset-block-end: clamp(1rem, 2.2vw, 1.8rem);
+    inset-inline-end: clamp(1rem, 2.2vw, 1.8rem);
+    inline-size: 46px;
+    block-size: 46px;
+    opacity: 0;
+    transition: opacity 500ms var(--ease), background var(--dur) var(--ease),
+                border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.rp-film-stage:hover .rp-film-full,
+.rp-film-full:focus-visible { opacity: 1; }
+.rp-film-full svg { inline-size: 15px; block-size: 15px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+
+@media (max-width: 700px) {
+    .rp-film-full, .rp-film-stage.is-playing .rp-film-play { opacity: 1; }
+}
+
+/* --- 19.6 Spec sheet ----------------------------------------------------- */
+.rp-spec { padding-block: var(--section-y); }
+.rp-spec-row {
+    display: grid;
+    grid-template-columns: minmax(8rem, 13rem) 1fr;
+    gap: clamp(1rem, 4vw, 4rem);
+    padding-block: clamp(1.4rem, 2.8vw, 2.2rem);
+    border-block-start: 1px solid var(--line-soft);
+}
+.rp-spec-row:last-child { border-block-end: 1px solid var(--line-soft); }
+.rp-spec-key {
+    font-size: var(--micro);
+    letter-spacing: 0.22em;
+    color: var(--walnut);
+    padding-block-start: 0.4rem;
+}
+.rp-spec-val { font-size: clamp(1.05rem, 1.7vw, 1.4rem); font-weight: 500; line-height: 1.6; }
+.rp-spec-val small {
+    display: block;
+    font-size: var(--small);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    margin-block-start: 0.35rem;
+    /* `.latin` flips this line to LTR, which would otherwise drag it to the
+       far edge of the row; `end` puts it back under the Persian value. */
+    text-align: end;
+}
+@media (max-width: 640px) {
+    .rp-spec-row { grid-template-columns: 1fr; gap: 0.4rem; }
+}
+
+/* --- 19.7 Lightbox ------------------------------------------------------- */
+.rp-lb {
+    position: fixed;
+    inset: 0;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(3.5rem, 7vw, 5rem) clamp(1rem, 8vw, 6rem);
+    background: rgba(10, 8, 6, 0.97);
+    opacity: 0;
+    transition: opacity 520ms var(--ease);
+}
+.rp-lb[hidden] { display: none; }
+.rp-lb.is-open { opacity: 1; }
+
+.rp-lb-stage {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4rem;
+    max-inline-size: 100%;
+}
+.rp-lb-img {
+    max-inline-size: 100%;
+    max-block-size: 76vh;
+    inline-size: auto;
+    block-size: auto;
+    object-fit: contain;
+    opacity: 0;
+    transform: scale(0.985);
+    transition: opacity 620ms var(--ease), transform 900ms var(--ease-slow);
+}
+.rp-lb.is-shown .rp-lb-img { opacity: 1; transform: none; }
+
+.rp-lb-cap {
+    display: flex;
+    align-items: baseline;
+    gap: 1.1rem;
+    font-size: var(--small);
+    color: rgba(247, 244, 239, 0.66);
+    text-align: center;
+}
+.rp-lb-count { font-size: var(--micro); letter-spacing: 0.2em; color: var(--brass); flex: none; }
+
+.rp-lb-close,
+.rp-lb-nav {
+    position: absolute;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 48px;
+    block-size: 48px;
+    border: 1px solid rgba(247, 244, 239, 0.22);
+    border-radius: 50%;
+    color: rgba(247, 244, 239, 0.82);
+    transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.rp-lb-close:hover,
+.rp-lb-nav:hover { background: var(--brass); border-color: var(--brass); color: var(--ink); }
+.rp-lb-close svg,
+.rp-lb-nav svg { inline-size: 16px; block-size: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+
+.rp-lb-close { inset-block-start: clamp(1rem, 3vw, 2rem); inset-inline-end: clamp(1rem, 3vw, 2rem); }
+.rp-lb-nav   { inset-block-start: 50%; transform: translateY(-50%); }
+.rp-lb-prev  { inset-inline-end: clamp(0.6rem, 2.5vw, 2rem); }
+.rp-lb-next  { inset-inline-start: clamp(0.6rem, 2.5vw, 2rem); }
+
+@media (max-width: 700px) {
+    .rp-lb-nav { inset-block-start: auto; inset-block-end: clamp(1rem, 4vw, 2rem); transform: none; }
+    .rp-lb-prev { inset-inline-end: 28%; }
+    .rp-lb-next { inset-inline-start: 28%; }
+    .rp-lb-img { max-block-size: 64vh; }
+}
+
+/* --- 19.8 Reduced motion -------------------------------------------------
+   Nothing on this page may depend on movement to become visible.
+   ------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    .js .rp-frame { clip-path: none !important; transition: none !important; --sc: 1 !important; }
+    .rp-frame img { transform: none !important; transition: none !important; }
+    .rp-frame:hover .rp-frame-cue,
+    .rp-frame:focus-visible .rp-frame-cue { transform: none; }
+    .rp-hero-eyebrow,
+    .rp-hero-sub { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .js .rp-hero-title .rp-word > span { transform: none !important; transition: none !important; }
+    .rp-hero-rule { inline-size: min(230px, 46vw) !important; transition: none !important; }
+    .rp-scroll-cue { opacity: 1 !important; transition: none !important; }
+    .rp-scroll-cue-line::after { animation: none; }
+    .rp-lb-img { opacity: 1 !important; transform: none !important; transition: none !important; }
+}

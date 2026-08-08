@@ -297,3 +297,283 @@
     // Late enough not to collide with the hero landing, early enough to be seen.
     window.setTimeout(open, 2600);
 })();
+
+/* ==========================================================================
+   ROYAL PALACE case page — hero film, frame reveal, parallax, lightbox.
+   Self-contained: bails out immediately on every other page.
+   ========================================================================== */
+(function () {
+    'use strict';
+
+    if (!document.body.hasAttribute('data-rp')) return;
+
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hasIO  = 'IntersectionObserver' in window;
+    var coarse = window.matchMedia('(max-width: 700px)').matches;
+
+    /* ----------------------------------------------------------------------
+       Hero — type lands on load; the film only rolls where it is welcome.
+       On narrow screens the poster stands in, so a visitor on mobile data
+       never pays for a background video they did not ask for.
+       ---------------------------------------------------------------------- */
+    var hero = document.querySelector('[data-rp-hero]');
+    var heroVid = document.querySelector('[data-rp-hero-video]');
+    var heroPause = document.querySelector('.rp-hero-pause');
+
+    if (hero) {
+        window.requestAnimationFrame(function () {
+            window.requestAnimationFrame(function () { hero.classList.add('is-in'); });
+        });
+    }
+
+    if (heroVid) {
+        var heroBlocked = reduce || coarse;
+        var heroPaused = heroBlocked;
+
+        var playHero = function () {
+            var p = heroVid.play();
+            if (p && p.catch) p.catch(function () {});
+        };
+
+        if (heroBlocked) {
+            heroVid.preload = 'none';
+            if (heroPause) heroPause.setAttribute('aria-pressed', 'true');
+        } else {
+            heroVid.preload = 'auto';
+            heroVid.load();
+            playHero();
+        }
+
+        if (heroPause) {
+            heroPause.addEventListener('click', function () {
+                heroPaused = !heroVid.paused;
+                if (heroPaused) {
+                    heroVid.pause();
+                } else {
+                    // First press on mobile is also the consent to download it.
+                    if (heroVid.preload !== 'auto') { heroVid.preload = 'auto'; heroVid.load(); }
+                    playHero();
+                }
+                heroPause.setAttribute('aria-pressed', String(heroPaused));
+            });
+        }
+
+        if (hasIO) {
+            var heroIO = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        if (!heroPaused) playHero();
+                    } else {
+                        heroVid.pause();
+                    }
+                });
+            }, { threshold: 0.15 });
+            heroIO.observe(heroVid);
+        }
+    }
+
+    /* ----------------------------------------------------------------------
+       Frame reveal — the editorial blocks ride the site-wide `.reveal`
+       observer; frames need their own because their hidden state is a
+       clip-path, not an opacity.
+
+       The <figure> is observed, never the frame inside it: a fully clipped
+       element reports a zero intersection ratio, so a frame watching itself
+       would wait forever for the reveal that removes its own clip.
+       ---------------------------------------------------------------------- */
+    var revealables = document.querySelectorAll('.rp-fig');
+
+    if (reduce || !hasIO) {
+        revealables.forEach(function (el) { el.classList.add('is-visible'); });
+    } else {
+        var rpIO = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                rpIO.unobserve(entry.target);
+            });
+        }, { threshold: 0.14, rootMargin: '0px 0px -70px 0px' });
+        revealables.forEach(function (el) { rpIO.observe(el); });
+    }
+
+    /* ----------------------------------------------------------------------
+       Parallax — the photograph drifts inside a frame that is already
+       oversized, so nothing can expose an edge. Amplitude is in px, declared
+       per figure, and capped hard. Off entirely on touch and reduced motion.
+       ---------------------------------------------------------------------- */
+    var parFigs = Array.prototype.slice.call(document.querySelectorAll('[data-rp-par]'));
+
+    if (parFigs.length && !reduce && !coarse) {
+        var ticking = false;
+
+        var runParallax = function () {
+            var vh = window.innerHeight;
+            parFigs.forEach(function (fig) {
+                var img = fig.querySelector('.rp-frame img');
+                if (!img) return;
+                var box = fig.getBoundingClientRect();
+                if (box.bottom < -200 || box.top > vh + 200) return;
+                // -1 (entering from below) → 1 (leaving past the top)
+                var progress = (vh / 2 - (box.top + box.height / 2)) / (vh / 2 + box.height / 2);
+                var amp = Math.min(parseFloat(fig.getAttribute('data-rp-par')) || 30, 60);
+                img.style.setProperty('--par', (progress * amp).toFixed(2) + 'px');
+            });
+            ticking = false;
+        };
+
+        var onScroll = function () {
+            if (ticking) return;
+            ticking = true;
+            window.requestAnimationFrame(runParallax);
+        };
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll, { passive: true });
+        runParallax();
+    }
+
+    /* ----------------------------------------------------------------------
+       Film — minimal controls over a native <video> with the chrome hidden.
+       Fullscreen falls back to the video element where the container cannot
+       go fullscreen (older iOS exposes it only on the media element).
+       ---------------------------------------------------------------------- */
+    var stage = document.querySelector('[data-rp-film]');
+    if (stage) {
+        var film = stage.querySelector('[data-rp-film-video]');
+        var filmToggle = stage.querySelector('[data-rp-film-toggle]');
+        var filmFs = stage.querySelector('[data-rp-film-fs]');
+
+        var syncFilm = function () {
+            var playing = !film.paused && !film.ended;
+            stage.classList.toggle('is-playing', playing);
+            if (filmToggle) {
+                filmToggle.setAttribute('aria-label', playing ? 'توقف فیلم پروژه' : 'پخش فیلم پروژه');
+            }
+        };
+
+        if (filmToggle) {
+            filmToggle.addEventListener('click', function () {
+                if (film.paused) {
+                    // Sound is the point of a project film — but a refused
+                    // unmuted play must not end in silence and no picture.
+                    film.muted = false;
+                    var p = film.play();
+                    if (p && p.catch) {
+                        p.catch(function () {
+                            film.muted = true;
+                            film.play().catch(function () {});
+                        });
+                    }
+                } else {
+                    film.pause();
+                }
+            });
+        }
+
+        film.addEventListener('play', syncFilm);
+        film.addEventListener('pause', syncFilm);
+        film.addEventListener('ended', syncFilm);
+
+        if (filmFs) {
+            filmFs.addEventListener('click', function () {
+                if (document.fullscreenElement) { document.exitFullscreen(); return; }
+                if (stage.requestFullscreen) { stage.requestFullscreen().catch(function () {}); }
+                else if (film.webkitEnterFullscreen) { film.webkitEnterFullscreen(); }
+            });
+        }
+
+        // A film that has scrolled away should not keep playing out of sight.
+        if (hasIO) {
+            var filmIO = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting && !film.paused) film.pause();
+                });
+            }, { threshold: 0.2 });
+            filmIO.observe(stage);
+        }
+    }
+
+    /* ----------------------------------------------------------------------
+       Lightbox — fullscreen viewing for every frame on the page.
+       Focus is trapped for as long as it is open and handed back on close.
+       ---------------------------------------------------------------------- */
+    var lb = document.getElementById('rpLightbox');
+    var frames = Array.prototype.slice.call(document.querySelectorAll('.rp-frame[data-rp-full]'));
+
+    if (lb && frames.length) {
+        var lbImg = lb.querySelector('[data-rp-lb-img]');
+        var lbText = lb.querySelector('[data-rp-lb-text]');
+        var lbCount = lb.querySelector('[data-rp-lb-count]');
+        var lbClose = lb.querySelector('[data-rp-lb-close]');
+        var lbPrev = lb.querySelector('[data-rp-lb-prev]');
+        var lbNext = lb.querySelector('[data-rp-lb-next]');
+        var index = 0;
+        var lastFocus = null;
+
+        var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+
+        var show = function (i) {
+            index = (i + frames.length) % frames.length;
+            var frame = frames[index];
+            var src = frame.getAttribute('data-rp-full');
+            var caption = frame.getAttribute('data-rp-caption') || '';
+            var inner = frame.querySelector('img');
+
+            lb.classList.remove('is-shown');
+            var swap = function () {
+                lbImg.src = src;
+                lbImg.alt = inner ? inner.alt : caption;
+                if (lbText) lbText.textContent = caption;
+                if (lbCount) lbCount.textContent = pad(index + 1) + ' / ' + pad(frames.length);
+                lb.classList.add('is-shown');
+            };
+            if (reduce) { swap(); } else { window.setTimeout(swap, 160); }
+        };
+
+        var onKey = function (e) {
+            if (e.key === 'Escape') { close(); return; }
+            if (e.key === 'ArrowLeft')  { show(index + 1); return; }   // RTL: left advances
+            if (e.key === 'ArrowRight') { show(index - 1); return; }
+            if (e.key !== 'Tab') return;
+            // Focus trap
+            var stops = [lbClose, lbPrev, lbNext].filter(Boolean);
+            var first = stops[0];
+            var last = stops[stops.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        };
+
+        var open = function (i, trigger) {
+            lastFocus = trigger || document.activeElement;
+            lb.hidden = false;
+            show(i);
+            window.requestAnimationFrame(function () {
+                window.requestAnimationFrame(function () { lb.classList.add('is-open'); });
+            });
+            document.body.style.overflow = 'hidden';
+            document.addEventListener('keydown', onKey);
+            if (lbClose) lbClose.focus();
+        };
+
+        function close() {
+            lb.classList.remove('is-open', 'is-shown');
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', onKey);
+            window.setTimeout(function () { lb.hidden = true; lbImg.src = ''; }, reduce ? 0 : 520);
+            if (lastFocus) lastFocus.focus();
+        }
+
+        frames.forEach(function (frame, i) {
+            frame.addEventListener('click', function () { open(i, frame); });
+        });
+
+        if (lbClose) lbClose.addEventListener('click', close);
+        if (lbPrev) lbPrev.addEventListener('click', function () { show(index - 1); });
+        if (lbNext) lbNext.addEventListener('click', function () { show(index + 1); });
+
+        // Click on the backdrop — but not on the picture or the controls.
+        lb.addEventListener('click', function (e) {
+            if (e.target === lb || e.target.classList.contains('rp-lb-stage')) close();
+        });
+    }
+})();

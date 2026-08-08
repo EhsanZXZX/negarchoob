@@ -4,9 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>هتل رویال پالاس تبریز | پروژه‌های نگار چوب پارمیس</title>
-<meta name="description" content="تأمین متریال چوبی و همراهی نگار چوب پارمیس در تجهیز فضاهای عمومی و اتاق‌های هتل ۴ ستاره رویال پالاس تبریز.">
+<meta name="description" content="تجهیز هتل ۴ ستاره رویال پالاس تبریز — تأمین متریال چوبی، مبلمان و اجرای فضاهای عمومی و اتاق‌ها توسط نگار چوب پارمیس.">
 <meta name="theme-color" content="#1C1815">
 <link rel="icon" href="ncp-logo.jpg">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="ROYAL PALACE PROJECT — تجهیز هتل ۴ ستاره رویال پالاس تبریز">
+<meta property="og:description" content="روایت تصویری پروژه تجهیز هتل رویال پالاس تبریز — نگار چوب پارمیس.">
+<meta property="og:image" content="shot-royalpalace.jpg">
+<meta property="og:locale" content="fa_IR">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +21,7 @@
 <script>document.documentElement.classList.add('js');</script>
 
 </head>
-<body>
+<body data-rp>
 
 <a class="skip-link" href="#main">رفتن به محتوای اصلی</a>
 
@@ -59,46 +65,259 @@
 
 <main id="main">
 
-    <header class="case-hero">
-        <div class="case-hero-media">
-            <div class="framed-shot">
-                <picture>
-                    <source srcset="shot-royalpalace.webp" type="image/webp">
-                    <img src="shot-royalpalace.jpg" alt="نمای بیرونی هتل رویال پالاس تبریز در نور شامگاهی" width="1400" height="782" fetchpriority="high" decoding="async">
-                </picture>
-            </div>
+    <!-- =====================================================================
+         1 · HERO — full-bleed film, masked type
+         ===================================================================== -->
+    <header class="rp-hero" data-rp-hero>
+        <div class="rp-hero-media">
+            <video
+                data-rp-hero-video
+                poster="shot-royalpalace.jpg"
+                muted loop playsinline preload="none"
+                aria-label="ویدیوی معرفی پروژه هتل رویال پالاس تبریز">
+                <source src="royalpalace-film.mp4" type="video/mp4">
+            </video>
         </div>
-        <div class="case-hero-inner">
-            <span class="latin">PROJECT 01 · TABRIZ</span>
-            <h1>هتل رویال پالاس تبریز</h1>
+
+        <div class="rp-hero-inner">
+            <span class="rp-hero-eyebrow latin">PROJECT 01 — TABRIZ, IRAN</span>
+
+            <h1 class="rp-hero-title latin" aria-label="Royal Palace Project"><span class="rp-word" aria-hidden="true" style="--i:0"><span>ROYAL</span></span> <span class="rp-word" aria-hidden="true" style="--i:1"><span>PALACE</span></span> <span class="rp-word" aria-hidden="true" style="--i:2"><span>PROJECT</span></span></h1>
+
+            <span class="rp-hero-rule" aria-hidden="true"></span>
+            <p class="rp-hero-sub">تجهیز هتل ۴ ستاره رویال پالاس تبریز</p>
         </div>
+
+        <button class="media-toggle rp-hero-pause" type="button" aria-pressed="false" aria-label="توقف یا پخش ویدیوی پس‌زمینه">
+            <svg class="ico-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="5" width="3.4" height="14" rx="1"/><rect x="13.6" y="5" width="3.4" height="14" rx="1"/></svg>
+            <svg class="ico-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6L19 12z"/></svg>
+        </button>
+
+        <a class="rp-scroll-cue" href="#intro" aria-label="رفتن به معرفی پروژه">
+            <span class="rp-scroll-cue-label latin">SCROLL</span>
+            <span class="rp-scroll-cue-line" aria-hidden="true"></span>
+        </a>
     </header>
 
-    <section class="wrap">
-        <dl class="case-facts">
-            <div><dt>موقعیت</dt><dd>تبریز، آذربایجان شرقی</dd></div>
-            <div><dt>نوع پروژه</dt><dd>هتل ۴ ستاره</dd></div>
-            <div><dt>حوزه همکاری</dt><dd>تجهیز هتل</dd></div>
-            <div><dt>سال</dt><dd class="ltr">2026</dd></div>
-        </dl>
+    <!-- =====================================================================
+         2 · INTRO — editorial
+         ===================================================================== -->
+    <section class="rp-intro" id="intro">
+        <div class="wrap">
+            <div class="rp-intro-grid">
+
+                <div class="rp-intro-say">
+                    <span class="eyebrow">درباره پروژه</span>
+                    <p class="rp-statement rise"><span>کلاسیکی که باید در جزئیات چوب هم تکرار می‌شد.</span></p>
+                </div>
+
+                <div class="rp-intro-read reveal">
+                    <p>
+                        رویال پالاس بنایی با معماری کلاسیک است؛ جایی که هر سطح چوبی باید هم‌زبان با
+                        تناسبات نما و جزئیات تزئینی بنا انتخاب شود. نگار چوب پارمیس در این پروژه
+                        تأمین متریال چوبی و همراهی در تجهیز فضاهای عمومی و اتاق‌های هتل را بر عهده داشت.
+                    </p>
+                    <p>
+                        از لابی و لانژ تا سوئیت‌ها، گونهٔ چوب، رنگ پرداخت و جزئیات اتصالات به‌گونه‌ای
+                        انتخاب شد که مجموعه یکپارچه دیده شود — نه به‌عنوان تک‌قطعه‌های جدا، بلکه
+                        به‌عنوان یک زبان واحد که در تمام طبقات تکرار می‌شود.
+                    </p>
+
+                    <ul class="rp-role">
+                        <li>تأمین متریال چوبی فضاهای عمومی و اتاق‌ها</li>
+                        <li>انتخاب گونه و پرداخت هماهنگ با معماری کلاسیک بنا</li>
+                        <li>مشاوره در تطبیق متریال با طرح دکوراسیون داخلی</li>
+                        <li>کنترل کیفیت و اصالت محموله‌ها پیش از تحویل</li>
+                    </ul>
+
+                    <p class="rp-note">
+                        <em>این متن موقت است و پس از دریافت شرح کامل پروژه بازنویسی می‌شود.</em>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="wrap rp-intro-figure">
+            <figure class="rp-fig rp-fig--portraitish" data-rp-par="34">
+                <button class="rp-frame" type="button"
+                        style="--ar: 1024 / 574"
+                        data-rp-full="rp-05-detail-seating.webp"
+                        data-rp-caption="جزئیات مبلمان — میز و صندلی‌های چوب گردو با پرداخت مات">
+                    <img src="rp-05-detail-seating.webp" alt="میز چوبی با لبهٔ برنجی و دو صندلی چستر در کنار پردهٔ کتان، در یکی از اتاق‌های هتل رویال پالاس" width="1024" height="574" loading="lazy" decoding="async">
+                    <span class="rp-frame-veil" aria-hidden="true"></span>
+                    <span class="rp-frame-cue" aria-hidden="true">
+                        <span class="rp-frame-cue-ico">
+                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+                        </span>
+                        <span>مشاهده تمام‌صفحه</span>
+                    </span>
+                </button>
+                <figcaption class="rp-cap">
+                    <span class="rp-cap-num latin">01</span>
+                    <p>جزئیات مبلمان — چوب گردو، پرداخت مات، لبهٔ برنجی</p>
+                </figcaption>
+            </figure>
+        </div>
     </section>
 
-    <section class="section">
-        <div class="wrap">
-            <div class="case-body reveal">
-                <span class="eyebrow">درباره پروژه</span>
-                <p>
-                    رویال پالاس بنایی با معماری کلاسیک است؛ جایی که متریال چوبی باید هم‌زبان با تناسبات و جزئیات نما انتخاب شود. نگار چوب پارمیس در این پروژه تأمین متریال چوبی و همراهی در تجهیز فضاهای عمومی و اتاق‌های هتل را بر عهده داشته است.
-                </p>
+    <!-- =====================================================================
+         3 · GALLERY
+         ===================================================================== -->
+    <section class="rp-gallery" aria-labelledby="rp-gallery-title">
+        <div class="wrap rp-gallery-head reveal">
+            <span class="eyebrow">گالری پروژه</span>
+            <h2 id="rp-gallery-title" class="kicker">فضاهایی که ساخته شد</h2>
+        </div>
 
-                <h2>نقش ما در پروژه</h2>
-                <ul>
-                    <li>تأمین متریال چوبی فضاهای عمومی و اتاق‌ها</li>
-                    <li>انتخاب گونه و پرداخت هماهنگ با معماری کلاسیک بنا</li>
-                    <li>مشاوره در تطبیق متریال با طرح دکوراسیون داخلی</li>
-                    <li>کنترل کیفیت و اصالت محموله‌ها پیش از تحویل</li>
-                </ul>
+        <!-- Frame — full bleed -->
+        <figure class="rp-fig rp-fig--bleed" data-rp-par="46">
+            <button class="rp-frame" type="button"
+                    style="--ar: 1024 / 574"
+                    data-rp-full="rp-01-lobby-lounge.webp"
+                    data-rp-caption="لابی و لانژ — مبلمان چستر، میز گرد مرکزی و کف سنگ">
+                <img src="rp-01-lobby-lounge.webp" alt="لابی هتل رویال پالاس با مبلمان چستر مخملی، میز گرد مرکزی، لوستر کریستال و کف سنگ" width="1024" height="574" loading="lazy" decoding="async">
+                <span class="rp-frame-veil" aria-hidden="true"></span>
+                <span class="rp-frame-cue" aria-hidden="true">
+                    <span class="rp-frame-cue-ico">
+                        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+                    </span>
+                    <span>مشاهده تمام‌صفحه</span>
+                </span>
+            </button>
+            <figcaption class="rp-cap wrap">
+                <span class="rp-cap-num latin">02</span>
+                <p>لابی و لانژ — مبلمان چستر و میز گرد مرکزی</p>
+            </figcaption>
+        </figure>
+
+        <!-- Pair — offset -->
+        <div class="wrap">
+            <div class="rp-pair">
+
+                <figure class="rp-fig">
+                    <button class="rp-frame" type="button"
+                            style="--ar: 1024 / 1160"
+                            data-rp-full="rp-02-suite-parlour.webp"
+                            data-rp-caption="سوئیت — دیوار تلویزیون با قاب چوب گردو و کفپوش چوبی">
+                        <img src="rp-02-suite-parlour.webp" alt="نشیمن سوئیت هتل رویال پالاس با دیوار تلویزیون قاب‌شده در چوب گردو، میز چوبی و اتاق خواب در پس‌زمینه" width="1024" height="1160" loading="lazy" decoding="async">
+                        <span class="rp-frame-veil" aria-hidden="true"></span>
+                        <span class="rp-frame-cue" aria-hidden="true">
+                            <span class="rp-frame-cue-ico">
+                                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+                            </span>
+                            <span>مشاهده تمام‌صفحه</span>
+                        </span>
+                    </button>
+                    <figcaption class="rp-cap">
+                        <span class="rp-cap-num latin">03</span>
+                        <p>سوئیت — قاب چوب گردو و کفپوش هم‌رنگ</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="rp-fig rp-fig--drop" data-rp-par="26">
+                    <button class="rp-frame" type="button"
+                            style="--ar: 1024 / 574"
+                            data-rp-full="rp-04-room-living.webp"
+                            data-rp-caption="اتاق اجرایی — دیوارپوش چوبی، میز کار و نشیمن">
+                        <img src="rp-04-room-living.webp" alt="اتاق اجرایی هتل رویال پالاس با دیوارپوش چوبی، میز کار، مبل و روشنایی گرم" width="1024" height="574" loading="lazy" decoding="async">
+                        <span class="rp-frame-veil" aria-hidden="true"></span>
+                        <span class="rp-frame-cue" aria-hidden="true">
+                            <span class="rp-frame-cue-ico">
+                                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+                            </span>
+                            <span>مشاهده تمام‌صفحه</span>
+                        </span>
+                    </button>
+                    <figcaption class="rp-cap">
+                        <span class="rp-cap-num latin">04</span>
+                        <p>اتاق اجرایی — دیوارپوش چوبی و میز کار</p>
+                    </figcaption>
+                </figure>
+
             </div>
+        </div>
+
+        <!-- Frame — full bleed -->
+        <figure class="rp-fig rp-fig--bleed" data-rp-par="46">
+            <button class="rp-frame" type="button"
+                    style="--ar: 1024 / 574"
+                    data-rp-full="rp-03-lobby-reception.webp"
+                    data-rp-caption="پذیرش و لانژ — پیشخوان چوبی و قاب‌های قوسی">
+                <img src="rp-03-lobby-reception.webp" alt="پذیرش هتل رویال پالاس با پیشخوان چوبی، پنجره‌های قوسی و مبلمان چستر در لانژ" width="1024" height="574" loading="lazy" decoding="async">
+                <span class="rp-frame-veil" aria-hidden="true"></span>
+                <span class="rp-frame-cue" aria-hidden="true">
+                    <span class="rp-frame-cue-ico">
+                        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+                    </span>
+                    <span>مشاهده تمام‌صفحه</span>
+                </span>
+            </button>
+            <figcaption class="rp-cap wrap">
+                <span class="rp-cap-num latin">05</span>
+                <p>پذیرش و لانژ — پیشخوان چوبی و قاب‌های قوسی</p>
+            </figcaption>
+        </figure>
+    </section>
+
+    <!-- =====================================================================
+         4 · FILM
+         ===================================================================== -->
+    <section class="rp-film" aria-labelledby="rp-film-title">
+        <div class="wrap rp-film-head reveal">
+            <span class="eyebrow eyebrow--light">فیلم پروژه</span>
+            <h2 id="rp-film-title" class="kicker">یک دور کامل در فضا</h2>
+        </div>
+
+        <div class="rp-film-stage" data-rp-film>
+            <video
+                data-rp-film-video
+                poster="shot-royalpalace.jpg"
+                muted loop playsinline preload="metadata"
+                aria-label="فیلم پروژه هتل رویال پالاس تبریز">
+                <source src="royalpalace-film.mp4" type="video/mp4">
+            </video>
+
+            <button class="rp-film-play" type="button" data-rp-film-toggle aria-label="پخش فیلم پروژه">
+                <svg class="ico-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6L19 12z"/></svg>
+                <svg class="ico-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="5" width="3.4" height="14" rx="1"/><rect x="13.6" y="5" width="3.4" height="14" rx="1"/></svg>
+            </button>
+
+            <button class="rp-film-full" type="button" data-rp-film-fs aria-label="نمایش تمام‌صفحه">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         5 · SPEC SHEET
+         ===================================================================== -->
+    <section class="rp-spec" aria-labelledby="rp-spec-title">
+        <div class="wrap">
+            <h2 id="rp-spec-title" class="visually-hidden">مشخصات پروژه</h2>
+
+            <dl class="rp-spec-list reveal">
+                <div class="rp-spec-row">
+                    <dt class="rp-spec-key latin">PROJECT</dt>
+                    <dd class="rp-spec-val">هتل رویال پالاس<small class="latin">Royal Palace Hotel</small></dd>
+                </div>
+                <div class="rp-spec-row">
+                    <dt class="rp-spec-key latin">LOCATION</dt>
+                    <dd class="rp-spec-val">تبریز، ایران<small class="latin">Tabriz, Iran</small></dd>
+                </div>
+                <div class="rp-spec-row">
+                    <dt class="rp-spec-key latin">CATEGORY</dt>
+                    <dd class="rp-spec-val">تجهیز هتل — ۴ ستاره<small class="latin">Hotel Furnishing</small></dd>
+                </div>
+                <div class="rp-spec-row">
+                    <dt class="rp-spec-key latin">SERVICES</dt>
+                    <dd class="rp-spec-val">تجهیز داخلی / تأمین مبلمان / اجرای پروژه<small class="latin">Interior Furnishing / Furniture Supply / Project Execution</small></dd>
+                </div>
+                <div class="rp-spec-row">
+                    <dt class="rp-spec-key latin">YEAR</dt>
+                    <dd class="rp-spec-val">۱۴۰۵<small class="latin">2026</small></dd>
+                </div>
+            </dl>
         </div>
     </section>
 
@@ -127,6 +346,30 @@
     </section>
 
 </main>
+
+<!-- =========================================================================
+     Lightbox — built for this page only
+     ========================================================================= -->
+<div class="rp-lb" id="rpLightbox" role="dialog" aria-modal="true" aria-label="نمایش تمام‌صفحه تصویر" hidden>
+    <button class="rp-lb-close" type="button" data-rp-lb-close aria-label="بستن">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+
+    <button class="rp-lb-nav rp-lb-prev" type="button" data-rp-lb-prev aria-label="تصویر قبلی">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <button class="rp-lb-nav rp-lb-next" type="button" data-rp-lb-next aria-label="تصویر بعدی">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg>
+    </button>
+
+    <figure class="rp-lb-stage">
+        <img class="rp-lb-img" data-rp-lb-img src="" alt="">
+        <figcaption class="rp-lb-cap">
+            <span class="rp-lb-count latin" data-rp-lb-count></span>
+            <span data-rp-lb-text></span>
+        </figcaption>
+    </figure>
+</div>
 
 <footer>
     <div class="footer-grid">
