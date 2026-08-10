@@ -323,9 +323,23 @@
     var heroPause = document.querySelector('.rp-hero-pause');
 
     if (hero) {
-        window.requestAnimationFrame(function () {
-            window.requestAnimationFrame(function () { hero.classList.add('is-in'); });
-        });
+        var startHero = function () {
+            window.requestAnimationFrame(function () {
+                window.requestAnimationFrame(function () { hero.classList.add('is-in'); });
+            });
+        };
+
+        // Nothing in the hero is visible until `is-in` — the display words sit
+        // inside their masks — so holding the entrance until the webfonts have
+        // settled means the title can never flash a fallback face and reflow.
+        // Races a 2s cap: if the font host is unreachable (it often is from
+        // Iran) the hero must still arrive rather than wait on a dead request.
+        if (document.fonts && document.fonts.ready && typeof Promise !== 'undefined') {
+            var capped = new Promise(function (resolve) { window.setTimeout(resolve, 2000); });
+            Promise.race([document.fonts.ready, capped]).then(startHero, startHero);
+        } else {
+            startHero();
+        }
     }
 
     if (heroVid) {

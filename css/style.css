@@ -1935,6 +1935,10 @@ a.channel-value:hover { color: var(--walnut); border-color: var(--walnut); }
     inset-block-end: 0;
     inset-inline-start: 50%;
     transform: translateX(50%);
+    /* The visible mark is a 1px hairline; the target around it is not. */
+    display: flex;
+    justify-content: center;
+    inline-size: 48px;
     padding-block: 1rem 0;
     opacity: 0;
     transition: opacity 900ms var(--ease) 1600ms;
@@ -2069,6 +2073,9 @@ a.channel-value:hover { color: var(--walnut); border-color: var(--walnut); }
     text-align: start;
 }
 .ip-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
     border-block-end: 1px solid var(--line);
     padding-block-end: 2px;
     transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
@@ -2082,6 +2089,47 @@ a.channel-value:hover { color: var(--walnut); border-color: var(--walnut); }
     .ip-spec-val { text-align: start; }
     .ip-spec-val small { text-align: end; }
 }
+
+/* --- 20.35 The material --------------------------------------------------
+   Four traits, columns rather than rows, so this section does not read as a
+   second copy of the applications register directly beneath it.
+   ------------------------------------------------------------------------- */
+.ip-material { padding-block: var(--section-y) 0; }
+.ip-material .kicker { margin-block-end: 1.4rem; }
+.ip-material-lede {
+    font-size: var(--body-lg);
+    line-height: 2.05;
+    color: var(--ink-soft);
+    max-width: 46ch;
+    margin-block-end: clamp(3rem, 7vw, 5rem);
+}
+
+.ip-trait-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1.8rem, 4vw, 3.5rem);
+}
+.ip-trait { border-block-start: 1px solid var(--line); padding-block-start: 1.4rem; }
+.ip-trait-num {
+    display: block;
+    font-size: var(--micro);
+    letter-spacing: 0.2em;
+    color: var(--brass);
+    margin-block-end: 1rem;
+    /* `.latin` flips this to LTR; without `end` the numeral lands on the
+       opposite edge from the Persian heading it belongs to. */
+    text-align: end;
+}
+.ip-trait h3 {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-weight: 600;
+    line-height: 1.6;
+    margin-block-end: 0.7rem;
+}
+.ip-trait p { font-size: var(--small); line-height: 1.95; color: var(--ink-soft); }
+
+@media (max-width: 900px) { .ip-trait-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .ip-trait-grid { grid-template-columns: 1fr; } }
 
 /* --- 20.4 Applications — a register, not bullets ------------------------- */
 .ip-apps { padding-block: var(--section-y); }
