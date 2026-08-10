@@ -5,5 +5,10 @@ desktop.ini
 *.swp
 
 # Local tooling
-.claude/
+# `.claude/*`, not `.claude/` — git cannot re-include anything beneath a
+# directory it has excluded outright, so the contents are ignored instead and
+# the design skills are negated back in. They are part of the project: they
+# are what keeps the look of this site consistent across machines.
+.claude/*
+!.claude/skills/
 .vscode/
