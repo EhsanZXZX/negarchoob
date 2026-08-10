@@ -2031,9 +2031,18 @@ a.channel-value:hover { color: var(--walnut); border-color: var(--walnut); }
     background: var(--brass);
     flex: none;
 }
+/* Once the credential wraps to two lines the separator is stranded at the end
+   of the first one, reading as a stray mark. The line break separates them. */
+@media (max-width: 620px) {
+    .ip-credential { flex-direction: column; gap: 0.5rem; }
+    .ip-credential-dot { display: none; }
+}
 
 .ip-brand-read { max-width: 56ch; margin-inline: auto; text-align: center; }
 .ip-brand-read p { font-size: var(--body-lg); line-height: 2.1; color: var(--ink-soft); }
+/* Granorte's block is a single paragraph, so this never showed until a second
+   partner arrived with two and they ran together. */
+.ip-brand-read p + p { margin-block-start: 1.5rem; }
 
 /* Brand facts — same register as the project spec sheets */
 .ip-spec { max-width: 46rem; margin-inline: auto; margin-block-start: clamp(3rem, 7vw, 5.5rem); }
@@ -2089,6 +2098,63 @@ a.channel-value:hover { color: var(--walnut); border-color: var(--walnut); }
     .ip-spec-val { text-align: start; }
     .ip-spec-val small { text-align: end; }
 }
+
+/* --- 20.32 Partner chapter marker ---------------------------------------
+   A thin full-width rule with the partner index at one end and the country at
+   the other. It is the whole reason the page can hold more than one brand
+   without either reading as an afterthought.
+   ------------------------------------------------------------------------- */
+.ip-chapter {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2.5vw, 2rem);
+    /* Space below as well as above: without it the rule lands a few pixels
+       off the band edge below, which reads as a mistake rather than a join. */
+    padding-block: var(--section-y) clamp(1.8rem, 4vw, 3rem);
+}
+.ip-chapter-num,
+.ip-chapter-place {
+    font-size: var(--micro);
+    letter-spacing: 0.28em;
+    color: var(--walnut);
+    flex: none;
+}
+.ip-chapter-place { color: var(--ink-faint); }
+.ip-chapter-rule {
+    flex: 1 1 auto;
+    block-size: 1px;
+    background: var(--line);
+}
+
+/* The chapter marker already opens the space; the band beneath it should not
+   open it a second time. */
+.ip-chapter + .ip-brand,
+.wrap:has(.ip-chapter) + .ip-brand { padding-block-start: clamp(3rem, 7vw, 5.5rem); }
+
+@media (max-width: 520px) {
+    .ip-chapter { gap: 0.9rem; }
+    .ip-chapter-num, .ip-chapter-place { letter-spacing: 0.18em; }
+}
+
+/* --- 20.33 Typographic wordmark -----------------------------------------
+   Stands in for a supplied logo. Set in the display face at seal scale so the
+   second partner carries the same weight as the first, and swapped for the
+   real mark the moment one arrives.
+   ------------------------------------------------------------------------- */
+.ip-wordmark {
+    font-size: clamp(1.5rem, 4.4vw, 3.2rem);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    color: var(--walnut-deep);
+    text-transform: uppercase;
+    text-align: center;
+    text-wrap: balance;
+}
+
+/* An applications list is longer than a two-word value and must be allowed to
+   wrap rather than push the row. */
+.ip-spec-val--wrap { line-height: 1.8; }
 
 /* --- 20.35 The material --------------------------------------------------
    Four traits, columns rather than rows, so this section does not read as a
