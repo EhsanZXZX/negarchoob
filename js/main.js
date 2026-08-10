@@ -316,7 +316,9 @@
        On narrow screens the poster stands in, so a visitor on mobile data
        never pays for a background video they did not ask for.
        ---------------------------------------------------------------------- */
-    var hero = document.querySelector('[data-rp-hero]');
+    // The partnerships hero shares the entrance choreography but carries a
+    // still, not a film — the video branch below simply finds nothing.
+    var hero = document.querySelector('[data-rp-hero], [data-ip-hero]');
     var heroVid = document.querySelector('[data-rp-hero-video]');
     var heroPause = document.querySelector('.rp-hero-pause');
 

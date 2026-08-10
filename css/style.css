@@ -1844,3 +1844,369 @@ a.channel-value:hover { color: var(--walnut); border-color: var(--walnut); }
     .rp-scroll-cue-line::after { animation: none; }
     .rp-lb-img { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
+
+/* ==========================================================================
+   20. INTERNATIONAL PARTNERSHIPS
+   Scoped to partnerships.html. Prefixed `.ip-`; the frame, reveal, parallax
+   and lightbox components are the shared `.rp-` set the project pages
+   already use, so the motion language stays identical.
+   ========================================================================== */
+
+/* --- 20.1 Hero — a seal, not a banner -----------------------------------
+   Centred type inside a pair of brass rules that draw themselves apart.
+   ------------------------------------------------------------------------- */
+.ip-hero {
+    position: relative;
+    min-block-size: 92svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--ink);
+    text-align: center;
+}
+.ip-hero-media { position: absolute; inset: 0; z-index: 0; }
+.ip-hero-media picture { display: contents; }
+.ip-hero-media img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: center 58%;
+}
+.ip-hero::after {
+    content: '';
+    position: absolute; inset: 0; z-index: 1;
+    background:
+        radial-gradient(ellipse at center, rgba(12, 9, 7, 0.42) 0%, rgba(12, 9, 7, 0.78) 78%),
+        linear-gradient(to bottom, rgba(12, 9, 7, 0.55) 0%, transparent 30%);
+}
+
+.ip-hero-inner {
+    position: relative;
+    z-index: 2;
+    inline-size: 100%;
+    max-inline-size: 62rem;
+    padding-inline: var(--gutter);
+    color: #fff;
+}
+
+.ip-rule {
+    display: block;
+    inline-size: 0;
+    block-size: 1px;
+    margin-inline: auto;
+    background: var(--brass);
+    transition: inline-size 1500ms var(--ease-slow);
+}
+.ip-rule--top    { margin-block-end: clamp(1.8rem, 4vw, 3.2rem); transition-delay: 200ms; }
+.ip-rule--bottom { margin-block-start: clamp(1.8rem, 4vw, 3.2rem); transition-delay: 1150ms; }
+.ip-hero.is-in .ip-rule { inline-size: min(28rem, 78%); }
+
+.ip-hero-title {
+    font-size: clamp(1.6rem, 5.2vw, 4.4rem);
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    line-height: 1.18;
+    text-transform: uppercase;
+}
+.ip-hero-title .ip-word { display: inline-block; overflow: hidden; vertical-align: bottom; }
+.js .ip-hero-title .ip-word > span {
+    display: block;
+    transform: translateY(114%);
+    transition: transform 1200ms var(--ease-slow);
+    transition-delay: calc(var(--i, 0) * 160ms + 380ms);
+}
+.ip-hero.is-in .ip-hero-title .ip-word > span { transform: none; }
+
+.ip-hero-sub {
+    margin-block-start: clamp(0.9rem, 2vw, 1.4rem);
+    font-size: clamp(0.95rem, 1.8vw, 1.3rem);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.88);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 1000ms var(--ease) 900ms, transform 1000ms var(--ease) 900ms;
+}
+.ip-hero.is-in .ip-hero-sub { opacity: 1; transform: none; }
+
+.ip-scroll-cue {
+    position: absolute;
+    z-index: 3;
+    inset-block-end: 0;
+    inset-inline-start: 50%;
+    transform: translateX(50%);
+    padding-block: 1rem 0;
+    opacity: 0;
+    transition: opacity 900ms var(--ease) 1600ms;
+}
+.ip-hero.is-in .ip-scroll-cue { opacity: 1; }
+.ip-scroll-cue-line {
+    display: block;
+    position: relative;
+    inline-size: 1px;
+    block-size: clamp(3rem, 6vw, 4.5rem);
+    background: rgba(255, 255, 255, 0.22);
+    overflow: hidden;
+}
+.ip-scroll-cue-line::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    block-size: 45%;
+    background: var(--brass);
+    animation: rp-cue 2600ms var(--ease-slow) infinite;
+}
+
+@media (max-width: 700px) {
+    .ip-hero { min-block-size: 82svh; }
+    .ip-hero-title { letter-spacing: 0.08em; }
+}
+
+/* --- 20.2 Editorial intro — centred, narrow, generous -------------------- */
+.ip-intro { padding-block: var(--section-y); text-align: center; }
+.ip-statement {
+    font-size: var(--statement);
+    font-weight: 300;
+    line-height: 1.42;
+    letter-spacing: -0.01em;
+    max-width: 20ch;
+    margin-inline: auto;
+    margin-block-end: clamp(2rem, 5vw, 3.6rem);
+}
+.ip-lede { max-width: 52ch; margin-inline: auto; }
+.ip-lede p {
+    font-size: var(--body-lg);
+    line-height: 2.1;
+    color: var(--ink-soft);
+}
+.ip-lede p + p { margin-block-start: 1.5rem; }
+
+/* --- 20.3 Granorte seal -------------------------------------------------- */
+.ip-brand { padding-block: var(--section-y); }
+
+.ip-seal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1.6rem, 3.5vw, 2.6rem);
+    padding-block-end: clamp(2.5rem, 6vw, 4.5rem);
+}
+/* The wordmark carries the section on its own — no card, no border, and
+   room around it in proportion to what it is being asked to certify. */
+.ip-logo {
+    inline-size: clamp(13rem, 26vw, 21rem);
+    block-size: auto;
+}
+
+.ip-credential {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    font-size: var(--micro);
+    letter-spacing: 0.26em;
+    color: var(--walnut);
+    text-align: center;
+}
+.ip-credential > span:first-child::before,
+.ip-credential > span:last-child::after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    inline-size: clamp(1.5rem, 4vw, 3.2rem);
+    block-size: 1px;
+    background: currentColor;
+    opacity: 0.5;
+    margin-inline: 0.9rem;
+}
+.ip-credential-dot {
+    inline-size: 3px;
+    block-size: 3px;
+    border-radius: 50%;
+    background: var(--brass);
+    flex: none;
+}
+
+.ip-brand-read { max-width: 56ch; margin-inline: auto; text-align: center; }
+.ip-brand-read p { font-size: var(--body-lg); line-height: 2.1; color: var(--ink-soft); }
+
+/* Brand facts — same register as the project spec sheets */
+.ip-spec { max-width: 46rem; margin-inline: auto; margin-block-start: clamp(3rem, 7vw, 5.5rem); }
+.ip-spec-row {
+    display: grid;
+    grid-template-columns: minmax(9rem, 14rem) 1fr;
+    gap: clamp(1rem, 4vw, 3rem);
+    padding-block: clamp(1.2rem, 2.4vw, 1.8rem);
+    border-block-start: 1px solid var(--line-soft);
+}
+.ip-spec-row:last-child { border-block-end: 1px solid var(--line-soft); }
+.ip-spec-key {
+    font-size: var(--micro);
+    letter-spacing: 0.22em;
+    color: var(--walnut);
+    padding-block-start: 0.35rem;
+}
+.ip-spec-val {
+    font-family: var(--font-latin);
+    direction: ltr;
+    unicode-bidi: isolate;
+    text-align: end;
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    letter-spacing: 0.06em;
+}
+.ip-spec-val small {
+    display: block;
+    font-family: var(--font);
+    direction: rtl;
+    font-size: var(--small);
+    letter-spacing: 0;
+    color: var(--ink-faint);
+    margin-block-start: 0.3rem;
+    /* The row is LTR so the Latin value sets flush right; this line flips
+       back to RTL, where `start` is that same right edge. Inheriting `end`
+       would throw it across the row. */
+    text-align: start;
+}
+.ip-link {
+    border-block-end: 1px solid var(--line);
+    padding-block-end: 2px;
+    transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.ip-link:hover { color: var(--walnut); border-color: var(--walnut); }
+
+@media (max-width: 640px) {
+    .ip-spec-row { grid-template-columns: 1fr; gap: 0.4rem; }
+    /* Stacked, both lines hang off the same left edge: the row reads as one
+       bilingual pair rather than two values thrown to opposite margins. */
+    .ip-spec-val { text-align: start; }
+    .ip-spec-val small { text-align: end; }
+}
+
+/* --- 20.4 Applications — a register, not bullets ------------------------- */
+.ip-apps { padding-block: var(--section-y); }
+.ip-apps .kicker { margin-block-end: clamp(2.5rem, 6vw, 4rem); }
+
+.ip-app-list { list-style: none; }
+.ip-app-list li {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr auto;
+    align-items: baseline;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    padding-block: clamp(1.3rem, 2.6vw, 2rem);
+    border-block-start: 1px solid var(--line-soft);
+    transition: background var(--dur) var(--ease);
+}
+.ip-app-list li:last-child { border-block-end: 1px solid var(--line-soft); }
+.ip-app-num { font-size: var(--micro); letter-spacing: 0.2em; color: var(--brass); }
+.ip-app-fa  { font-size: clamp(1.05rem, 1.9vw, 1.5rem); font-weight: 500; }
+.ip-app-en  { font-size: var(--small); color: var(--ink-faint); letter-spacing: 0.08em; }
+
+@media (max-width: 560px) {
+    .ip-app-list li { grid-template-columns: 2.6rem 1fr; }
+    .ip-app-en { grid-column: 2; }
+}
+
+/* --- 20.5 Material board -------------------------------------------------
+   The supplied product shots top out at 696px, so no plate is ever asked to
+   fill more width than its file can carry. The grid is a max-width cap, not
+   a stretch: the arrangement reads as samples set out on a table.
+   ------------------------------------------------------------------------- */
+.ip-board { padding-block: 0 var(--section-y); }
+.ip-board .kicker { margin-block-end: clamp(2.5rem, 6vw, 4rem); }
+
+.ip-board-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: clamp(1.4rem, 3.5vw, 3.5rem) clamp(1.4rem, 3vw, 3rem);
+    align-items: start;
+}
+.ip-plate { margin: 0; }
+.ip-plate            { grid-column: span 2; }
+.ip-plate--wide      { grid-column: span 3; }
+.ip-plate--drop      { margin-block-start: clamp(1.5rem, 5vw, 4.5rem); }
+
+/* Never upscale past the file's own pixels — a soft plate reads as cheap. */
+.ip-plate .rp-frame       { max-inline-size: 393px; }
+.ip-plate--wide .rp-frame { max-inline-size: 696px; }
+
+@media (max-width: 1000px) {
+    .ip-board-grid { grid-template-columns: repeat(4, 1fr); }
+    .ip-plate--wide { grid-column: span 4; }
+    .ip-plate { grid-column: span 2; }
+}
+@media (max-width: 620px) {
+    .ip-board-grid { grid-template-columns: 1fr; }
+    .ip-plate, .ip-plate--wide { grid-column: 1; }
+    .ip-plate--drop { margin-block-start: 0; }
+    .ip-plate .rp-frame, .ip-plate--wide .rp-frame { max-inline-size: 100%; }
+}
+
+/* --- 20.6 Home-page band ------------------------------------------------- */
+.ip-band { background: var(--ink); color: var(--ivory); }
+.ip-band-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(2rem, 6vw, 5rem);
+    padding-block: clamp(3.5rem, 8vw, 6.5rem);
+    flex-wrap: wrap;
+}
+.ip-band-say { max-width: 46ch; }
+.ip-band-title {
+    font-family: var(--font-latin);
+    direction: ltr;
+    unicode-bidi: isolate;
+    font-size: clamp(1.2rem, 2.6vw, 2rem);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--brass);
+    margin-block-end: 0.9rem;
+}
+.ip-band-say p { font-size: var(--body-lg); line-height: 2; color: rgba(247, 244, 239, 0.74); }
+
+.ip-band-mark {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    flex-wrap: wrap;
+}
+/* The wordmark is walnut-on-transparent; on the ink band it needs lifting
+   to ivory rather than sitting as a dark shape on a dark ground. */
+.ip-band-logo {
+    inline-size: clamp(9rem, 16vw, 12.5rem);
+    block-size: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.82;
+    transition: opacity var(--dur) var(--ease);
+}
+.ip-band:hover .ip-band-logo,
+.ip-band-inner:focus-within .ip-band-logo { opacity: 1; }
+
+.ip-band-go {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: var(--small);
+    letter-spacing: 0.06em;
+    color: var(--brass);
+    border-block-end: 1px solid rgba(199, 161, 90, 0.4);
+    padding-block-end: 0.4rem;
+    min-block-size: 44px;
+    transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.ip-band-go svg { inline-size: 15px; block-size: 15px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+.ip-band-go:hover { color: #fff; border-color: #fff; }
+
+@media (max-width: 760px) {
+    .ip-band-inner { flex-direction: column; align-items: flex-start; }
+}
+
+/* --- 20.7 Reduced motion ------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    .ip-rule { inline-size: min(28rem, 78%) !important; transition: none !important; }
+    .js .ip-hero-title .ip-word > span { transform: none !important; transition: none !important; }
+    .ip-hero-sub { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .ip-scroll-cue { opacity: 1 !important; transition: none !important; }
+    .ip-scroll-cue-line::after { animation: none; }
+}
