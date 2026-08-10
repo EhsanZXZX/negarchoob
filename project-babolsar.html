@@ -4,9 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>هتل میزبان بابلسر | پروژه‌های نگار چوب پارمیس</title>
-<meta name="description" content="تأمین متریال و مبلمان چوبی اتاق‌ها و فضاهای عمومی هتل پنج‌ستاره میزبان بابلسر توسط نگار چوب پارمیس.">
+<meta name="description" content="تجهیز هتل ۵ ستاره میزبان بابلسر — تأمین متریال چوبی، مبلمان و اجرای فضاهای عمومی، رستوران‌ها و اتاق‌ها توسط نگار چوب پارمیس.">
 <meta name="theme-color" content="#1C1815">
 <link rel="icon" href="ncp-logo.jpg">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="BABOLSAR PROJECT — تجهیز هتل ۵ ستاره میزبان بابلسر">
+<meta property="og:description" content="روایت تصویری پروژه تجهیز هتل میزبان بابلسر — نگار چوب پارمیس.">
+<meta property="og:image" content="bb-exterior.webp">
+<meta property="og:locale" content="fa_IR">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +21,7 @@
 <script>document.documentElement.classList.add('js');</script>
 
 </head>
-<body>
+<body data-rp>
 
 <a class="skip-link" href="#main">رفتن به محتوای اصلی</a>
 
@@ -59,56 +65,371 @@
 
 <main id="main">
 
-    <header class="case-hero">
-        <div class="case-hero-media">
-            <div class="framed-shot">
-                <picture>
-                    <source srcset="shot-babolsar.webp" type="image/webp">
-                    <img src="shot-babolsar.jpg" alt="نمای بیرونی هتل میزبان بابلسر در غروب" width="1400" height="751" fetchpriority="high" decoding="async">
-                </picture>
-            </div>
+    <!-- =====================================================================
+         1 · HERO — full-bleed film, masked type
+         ===================================================================== -->
+    <header class="rp-hero" data-rp-hero>
+        <div class="rp-hero-media">
+            <video
+                data-rp-hero-video
+                poster="bb-exterior.webp"
+                muted loop playsinline preload="none"
+                aria-label="ویدیوی معرفی پروژه هتل میزبان بابلسر">
+                <source src="babolsar-hotel.mp4" type="video/mp4">
+            </video>
         </div>
-        <div class="case-hero-inner">
-            <span class="latin">PROJECT 03 · BABOLSAR</span>
-            <h1>هتل میزبان بابلسر</h1>
+
+        <div class="rp-hero-inner">
+            <span class="rp-hero-eyebrow latin">PROJECT 03 — BABOLSAR, IRAN</span>
+
+            <h1 class="rp-hero-title latin" aria-label="Babolsar Project"><span class="rp-word" aria-hidden="true" style="--i:0"><span>BABOLSAR</span></span> <span class="rp-word" aria-hidden="true" style="--i:1"><span>PROJECT</span></span></h1>
+
+            <span class="rp-hero-rule" aria-hidden="true"></span>
+            <p class="rp-hero-sub">تجهیز هتل ۵ ستاره میزبان بابلسر</p>
         </div>
+
+        <button class="media-toggle rp-hero-pause" type="button" aria-pressed="false" aria-label="توقف یا پخش ویدیوی پس‌زمینه">
+            <svg class="ico-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="5" width="3.4" height="14" rx="1"/><rect x="13.6" y="5" width="3.4" height="14" rx="1"/></svg>
+            <svg class="ico-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6L19 12z"/></svg>
+        </button>
+
+        <a class="rp-scroll-cue" href="#intro" aria-label="رفتن به معرفی پروژه">
+            <span class="rp-scroll-cue-label latin">SCROLL</span>
+            <span class="rp-scroll-cue-line" aria-hidden="true"></span>
+        </a>
     </header>
 
-    <section class="wrap">
-        <dl class="case-facts">
-            <div><dt>موقعیت</dt><dd>بابلسر، مازندران</dd></div>
-            <div><dt>نوع پروژه</dt><dd>هتل ۵ ستاره</dd></div>
-            <div><dt>حوزه همکاری</dt><dd>تجهیز هتل</dd></div>
-            <div><dt>سال</dt><dd class="ltr">2026</dd></div>
-        </dl>
+    <!-- =====================================================================
+         2 · INTRO — editorial
+         ===================================================================== -->
+    <section class="rp-intro" id="intro">
+        <div class="wrap">
+            <div class="rp-intro-grid">
+
+                <div class="rp-intro-say">
+                    <span class="eyebrow">درباره پروژه</span>
+                    <p class="rp-statement rise"><span>چوبی که باید رطوبت دریا را سال‌ها تاب بیاورد.</span></p>
+                </div>
+
+                <div class="rp-intro-read reveal">
+                    <p>
+                        هتل میزبان بابلسر رو به دشت و دریا ساخته شده است؛ اقلیمی مرطوب که انتخاب
+                        گونهٔ چوب و نوع پرداخت را از یک تصمیم زیبایی‌شناختی به یک تصمیم فنی
+                        تبدیل می‌کند. نگار چوب پارمیس در این پروژه تأمین متریال و محصولات چوبی
+                        موردنیاز فضاهای هتلی را بر عهده داشت.
+                    </p>
+                    <p>
+                        از رستوران و فضاهای عمومی تا اتاق‌ها و سوئیت‌ها، متریال به‌گونه‌ای انتخاب شد
+                        که هم با طرح دکوراسیون اختصاصی پروژه هماهنگ باشد و هم در برابر شرایط
+                        اقلیمی شمال کشور دوام بیاورد.
+                    </p>
+
+                    <ul class="rp-role">
+                        <li>تأمین متریال چوبی اتاق‌ها و فضاهای عمومی</li>
+                        <li>مشاوره در انتخاب گونه و پرداخت متناسب با اقلیم مرطوب شمال کشور</li>
+                        <li>هماهنگی متریال با طرح دکوراسیون اختصاصی پروژه</li>
+                        <li>کنترل کیفیت و اصالت محموله‌ها پیش از تحویل</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="wrap rp-intro-figure">
+            <figure class="rp-fig" data-rp-par="34">
+                <button class="rp-frame" type="button"
+                        style="--ar: 1024 / 640"
+                        data-rp-full="bb-01-private-dining.webp"
+                        data-rp-caption="اتاق غذاخوری خصوصی — دیوارپوش تیغه‌ای چوب گردو و میز یکپارچه">
+                    <img src="bb-01-private-dining.webp" alt="اتاق غذاخوری خصوصی هتل میزبان بابلسر با دیوارپوش تیغه‌ای چوب گردو، سقف چوبی، میز ناهارخوری یکپارچه و منظرهٔ دشت و دریا" width="1024" height="640" loading="lazy" decoding="async">
+                    <span class="rp-frame-veil" aria-hidden="true"></span>
+                    <span class="rp-frame-cue" aria-hidden="true">
+                        <span class="rp-frame-cue-ico">
+                            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+                        </span>
+                        <span>مشاهده تمام‌صفحه</span>
+                    </span>
+                </button>
+                <figcaption class="rp-cap">
+                    <span class="rp-cap-num latin">01</span>
+                    <p>غذاخوری خصوصی — دیوارپوش تیغه‌ای و میز یکپارچهٔ چوب گردو</p>
+                </figcaption>
+            </figure>
+        </div>
     </section>
 
-    <section class="section">
-        <div class="wrap">
-            <div class="case-body reveal">
-                <span class="eyebrow">درباره پروژه</span>
-                <p>
-                    پروژه تجهیز هتل میزبان بابلسر با مبلمان و دکوراسیون‌های خاص برای اتاق‌ها و فضاهای عمومی اجرا شد. نگار چوب پارمیس در این پروژه، تأمین متریال و محصولات چوبی موردنیاز فضاهای هتلی را بر عهده داشته است.
-                </p>
+    <!-- =====================================================================
+         3 · GALLERY
+         ===================================================================== -->
+    <section class="rp-gallery" aria-labelledby="rp-gallery-title">
+        <div class="wrap rp-gallery-head reveal">
+            <span class="eyebrow">گالری پروژه</span>
+            <h2 id="rp-gallery-title" class="kicker">فضاهایی که ساخته شد</h2>
+        </div>
 
-                <h2>نقش ما در پروژه</h2>
-                <ul>
-                    <li>تأمین متریال چوبی اتاق‌ها و فضاهای عمومی</li>
-                    <li>مشاوره در انتخاب گونه و پرداخت متناسب با اقلیم مرطوب شمال کشور</li>
-                    <li>هماهنگی متریال با طرح دکوراسیون اختصاصی پروژه</li>
-                    <li>کنترل کیفیت و اصالت محموله‌ها پیش از تحویل</li>
-                </ul>
+        <!-- Frame — full bleed -->
+        <figure class="rp-fig rp-fig--bleed" data-rp-par="46">
+            <button class="rp-frame" type="button"
+                    style="--ar: 1024 / 572"
+                    data-rp-full="bb-02-restaurant-hall.webp"
+                    data-rp-caption="رستوران اصلی — میزهای چوبی، سنگ مرمر و سقف گنبدی">
+                <img src="bb-02-restaurant-hall.webp" alt="رستوران اصلی هتل میزبان بابلسر با میزهای چوبی، صندلی‌های مخمل فیروزه‌ای، کف مرمر و سقف گنبدی طلاکوب" width="1024" height="572" loading="lazy" decoding="async">
+                <span class="rp-frame-veil" aria-hidden="true"></span>
+                <span class="rp-frame-cue" aria-hidden="true">
+                    <span class="rp-frame-cue-ico">
+                        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+                    </span>
+                    <span>مشاهده تمام‌صفحه</span>
+                </span>
+            </button>
+            <figcaption class="rp-cap wrap">
+                <span class="rp-cap-num latin">02</span>
+                <p>رستوران اصلی — میزهای چوبی و سقف گنبدی</p>
+            </figcaption>
+        </figure>
+
+        <!-- Pair — offset -->
+        <div class="wrap">
+            <div class="rp-pair">
+
+                <figure class="rp-fig">
+                    <button class="rp-frame" type="button"
+                            style="--ar: 1376 / 768"
+                            data-rp-full="bb-03-breakfast-terrace.webp"
+                            data-rp-caption="سالن صبحانه — میزهای چوبی رو به شالیزار">
+                        <img src="bb-03-breakfast-terrace.webp" alt="سالن صبحانه هتل میزبان بابلسر با میزهای چوبی، صندلی‌های پارچه‌ای و پنجره‌های سرتاسری رو به شالیزار" width="1376" height="768" loading="lazy" decoding="async">
+                        <span class="rp-frame-veil" aria-hidden="true"></span>
+                        <span class="rp-frame-cue" aria-hidden="true">
+                            <span class="rp-frame-cue-ico">
+                                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+                            </span>
+                            <span>مشاهده تمام‌صفحه</span>
+                        </span>
+                    </button>
+                    <figcaption class="rp-cap">
+                        <span class="rp-cap-num latin">03</span>
+                        <p>سالن صبحانه — میزهای چوبی رو به شالیزار</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="rp-fig rp-fig--drop" data-rp-par="26">
+                    <button class="rp-frame" type="button"
+                            style="--ar: 1024 / 640"
+                            data-rp-full="bb-04-lounge-chesterfield.webp"
+                            data-rp-caption="لانژ — مبلمان چستر چرم و میز چوبی مرکزی">
+                        <img src="bb-04-lounge-chesterfield.webp" alt="لانژ هتل میزبان بابلسر با مبلمان چستر چرم تیره، میز چوبی مرکزی و پنجرهٔ سرتاسری رو به دشت" width="1024" height="640" loading="lazy" decoding="async">
+                        <span class="rp-frame-veil" aria-hidden="true"></span>
+                        <span class="rp-frame-cue" aria-hidden="true">
+                            <span class="rp-frame-cue-ico">
+                                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+                            </span>
+                            <span>مشاهده تمام‌صفحه</span>
+                        </span>
+                    </button>
+                    <figcaption class="rp-cap">
+                        <span class="rp-cap-num latin">04</span>
+                        <p>لانژ — مبلمان چستر چرم و میز چوبی مرکزی</p>
+                    </figcaption>
+                </figure>
+
+            </div>
+        </div>
+
+        <!-- Frame — full bleed -->
+        <figure class="rp-fig rp-fig--bleed" data-rp-par="46">
+            <button class="rp-frame" type="button"
+                    style="--ar: 1024 / 572"
+                    data-rp-full="bb-05-suite-lounge.webp"
+                    data-rp-caption="سوئیت رئیس‌جمهوری — سقف کاست‌بندی چوبی و نشیمن چرم">
+                <img src="bb-05-suite-lounge.webp" alt="نشیمن سوئیت هتل میزبان بابلسر با سقف کاست‌بندی چوب گردو، مبلمان چستر چرم، میز کار چوبی و منظرهٔ دشت" width="1024" height="572" loading="lazy" decoding="async">
+                <span class="rp-frame-veil" aria-hidden="true"></span>
+                <span class="rp-frame-cue" aria-hidden="true">
+                    <span class="rp-frame-cue-ico">
+                        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+                    </span>
+                    <span>مشاهده تمام‌صفحه</span>
+                </span>
+            </button>
+            <figcaption class="rp-cap wrap">
+                <span class="rp-cap-num latin">05</span>
+                <p>سوئیت — سقف کاست‌بندی چوبی و نشیمن چرم</p>
+            </figcaption>
+        </figure>
+
+        <!-- Pair — offset -->
+        <div class="wrap">
+            <div class="rp-pair">
+
+                <figure class="rp-fig">
+                    <button class="rp-frame" type="button"
+                            style="--ar: 1024 / 640"
+                            data-rp-full="bb-06-suite-seaview.webp"
+                            data-rp-caption="سوئیت دریا — نشیمن مجزا و درگاه چوبی اتاق خواب">
+                        <img src="bb-06-suite-seaview.webp" alt="نشیمن سوئیت رو به دریا در هتل میزبان بابلسر با درگاه چوبی اتاق خواب، مبل و میز چوبی" width="1024" height="640" loading="lazy" decoding="async">
+                        <span class="rp-frame-veil" aria-hidden="true"></span>
+                        <span class="rp-frame-cue" aria-hidden="true">
+                            <span class="rp-frame-cue-ico">
+                                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+                            </span>
+                            <span>مشاهده تمام‌صفحه</span>
+                        </span>
+                    </button>
+                    <figcaption class="rp-cap">
+                        <span class="rp-cap-num latin">06</span>
+                        <p>سوئیت دریا — نشیمن مجزا و درگاه چوبی</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="rp-fig rp-fig--drop" data-rp-par="26">
+                    <button class="rp-frame" type="button"
+                            style="--ar: 1024 / 640"
+                            data-rp-full="bb-07-room-cityview.webp"
+                            data-rp-caption="اتاق دبل — تاج تخت چوب بلوط و میز آرایش">
+                        <img src="bb-07-room-cityview.webp" alt="اتاق دبل هتل میزبان بابلسر با تاج تخت چوب بلوط و چرم، میز آرایش چوبی و پنجرهٔ سرتاسری" width="1024" height="640" loading="lazy" decoding="async">
+                        <span class="rp-frame-veil" aria-hidden="true"></span>
+                        <span class="rp-frame-cue" aria-hidden="true">
+                            <span class="rp-frame-cue-ico">
+                                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+                            </span>
+                            <span>مشاهده تمام‌صفحه</span>
+                        </span>
+                    </button>
+                    <figcaption class="rp-cap">
+                        <span class="rp-cap-num latin">07</span>
+                        <p>اتاق دبل — تاج تخت چوب بلوط و میز آرایش</p>
+                    </figcaption>
+                </figure>
+
+            </div>
+        </div>
+
+        <!-- Frame — full bleed -->
+        <figure class="rp-fig rp-fig--bleed" data-rp-par="46">
+            <button class="rp-frame" type="button"
+                    style="--ar: 1024 / 572"
+                    data-rp-full="bb-08-room-timber.webp"
+                    data-rp-caption="اتاق باغ — دیوارپوش و کفپوش تمام‌چوب">
+                <img src="bb-08-room-timber.webp" alt="اتاق رو به باغ در هتل میزبان بابلسر با دیوارپوش و کفپوش تمام‌چوب، کنسول دیواری و پنجرهٔ بزرگ" width="1024" height="572" loading="lazy" decoding="async">
+                <span class="rp-frame-veil" aria-hidden="true"></span>
+                <span class="rp-frame-cue" aria-hidden="true">
+                    <span class="rp-frame-cue-ico">
+                        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+                    </span>
+                    <span>مشاهده تمام‌صفحه</span>
+                </span>
+            </button>
+            <figcaption class="rp-cap wrap">
+                <span class="rp-cap-num latin">08</span>
+                <p>اتاق باغ — دیوارپوش و کفپوش تمام‌چوب</p>
+            </figcaption>
+        </figure>
+
+        <!-- Pair — offset -->
+        <div class="wrap">
+            <div class="rp-pair">
+
+                <figure class="rp-fig">
+                    <button class="rp-frame" type="button"
+                            style="--ar: 1024 / 640"
+                            data-rp-full="bb-09-room-twin.webp"
+                            data-rp-caption="اتاق دوتخته — تاج چرمی و درگاه چوبی اتاق دوم">
+                        <img src="bb-09-room-twin.webp" alt="اتاق دوتخته هتل میزبان بابلسر با تاج تخت چرمی، درگاه چوبی به اتاق دوم و منظرهٔ دریا" width="1024" height="640" loading="lazy" decoding="async">
+                        <span class="rp-frame-veil" aria-hidden="true"></span>
+                        <span class="rp-frame-cue" aria-hidden="true">
+                            <span class="rp-frame-cue-ico">
+                                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+                            </span>
+                            <span>مشاهده تمام‌صفحه</span>
+                        </span>
+                    </button>
+                    <figcaption class="rp-cap">
+                        <span class="rp-cap-num latin">09</span>
+                        <p>اتاق دوتخته — تاج چرمی و درگاه چوبی</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="rp-fig rp-fig--drop" data-rp-par="26">
+                    <button class="rp-frame" type="button"
+                            style="--ar: 1024 / 640"
+                            data-rp-full="bb-10-room-attic.webp"
+                            data-rp-caption="اتاق زیرشیروانی — تیرهای چوبی سقف و کنسول گردو">
+                        <img src="bb-10-room-attic.webp" alt="اتاق زیرشیروانی هتل میزبان بابلسر با تیرهای چوبی سقف، دیوارپوش چوب، کنسول گردو و نشیمن کناری" width="1024" height="640" loading="lazy" decoding="async">
+                        <span class="rp-frame-veil" aria-hidden="true"></span>
+                        <span class="rp-frame-cue" aria-hidden="true">
+                            <span class="rp-frame-cue-ico">
+                                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+                            </span>
+                            <span>مشاهده تمام‌صفحه</span>
+                        </span>
+                    </button>
+                    <figcaption class="rp-cap">
+                        <span class="rp-cap-num latin">10</span>
+                        <p>اتاق زیرشیروانی — تیرهای چوبی سقف و کنسول گردو</p>
+                    </figcaption>
+                </figure>
+
             </div>
         </div>
     </section>
 
-    <section class="wrap" style="padding-bottom: var(--section-y);">
-        <div class="case-video reveal">
-            <video controls playsinline preload="none" poster="shot-babolsar.jpg"
-                   aria-label="ویدیوی پروژه هتل میزبان بابلسر">
+    <!-- =====================================================================
+         4 · FILM
+         ===================================================================== -->
+    <section class="rp-film" aria-labelledby="rp-film-title">
+        <div class="wrap rp-film-head reveal">
+            <span class="eyebrow eyebrow--light">فیلم پروژه</span>
+            <h2 id="rp-film-title" class="kicker">یک دور کامل در فضا</h2>
+        </div>
+
+        <div class="rp-film-stage" data-rp-film>
+            <video
+                data-rp-film-video
+                poster="bb-exterior.webp"
+                muted loop playsinline preload="metadata"
+                aria-label="فیلم پروژه هتل میزبان بابلسر">
                 <source src="babolsar-hotel.mp4" type="video/mp4">
-                مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
             </video>
+
+            <button class="rp-film-play" type="button" data-rp-film-toggle aria-label="پخش فیلم پروژه">
+                <svg class="ico-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6L19 12z"/></svg>
+                <svg class="ico-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="5" width="3.4" height="14" rx="1"/><rect x="13.6" y="5" width="3.4" height="14" rx="1"/></svg>
+            </button>
+
+            <button class="rp-film-full" type="button" data-rp-film-fs aria-label="نمایش تمام‌صفحه">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4H4v5M15 20h5v-5M20 9V4h-5M4 15v5h5"/></svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         5 · SPEC SHEET
+         ===================================================================== -->
+    <section class="rp-spec" aria-labelledby="rp-spec-title">
+        <div class="wrap">
+            <h2 id="rp-spec-title" class="visually-hidden">مشخصات پروژه</h2>
+
+            <dl class="rp-spec-list reveal">
+                <div class="rp-spec-row">
+                    <dt class="rp-spec-key latin">PROJECT</dt>
+                    <dd class="rp-spec-val">هتل میزبان بابلسر<small class="latin">Mizban Babolsar Hotel</small></dd>
+                </div>
+                <div class="rp-spec-row">
+                    <dt class="rp-spec-key latin">LOCATION</dt>
+                    <dd class="rp-spec-val">بابلسر، مازندران<small class="latin">Babolsar, Iran</small></dd>
+                </div>
+                <div class="rp-spec-row">
+                    <dt class="rp-spec-key latin">CATEGORY</dt>
+                    <dd class="rp-spec-val">تجهیز هتل — ۵ ستاره<small class="latin">Hotel Furnishing</small></dd>
+                </div>
+                <div class="rp-spec-row">
+                    <dt class="rp-spec-key latin">SERVICES</dt>
+                    <dd class="rp-spec-val">تجهیز داخلی / تأمین مبلمان / اجرای پروژه<small class="latin">Interior Furnishing / Furniture Supply / Project Execution</small></dd>
+                </div>
+                <div class="rp-spec-row">
+                    <dt class="rp-spec-key latin">YEAR</dt>
+                    <dd class="rp-spec-val">۱۴۰۵<small class="latin">2026</small></dd>
+                </div>
+            </dl>
         </div>
     </section>
 
@@ -137,6 +458,30 @@
     </section>
 
 </main>
+
+<!-- =========================================================================
+     Lightbox — built for this page only
+     ========================================================================= -->
+<div class="rp-lb" id="rpLightbox" role="dialog" aria-modal="true" aria-label="نمایش تمام‌صفحه تصویر" hidden>
+    <button class="rp-lb-close" type="button" data-rp-lb-close aria-label="بستن">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+
+    <button class="rp-lb-nav rp-lb-prev" type="button" data-rp-lb-prev aria-label="تصویر قبلی">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <button class="rp-lb-nav rp-lb-next" type="button" data-rp-lb-next aria-label="تصویر بعدی">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg>
+    </button>
+
+    <figure class="rp-lb-stage">
+        <img class="rp-lb-img" data-rp-lb-img src="" alt="">
+        <figcaption class="rp-lb-cap">
+            <span class="rp-lb-count latin" data-rp-lb-count></span>
+            <span data-rp-lb-text></span>
+        </figcaption>
+    </figure>
+</div>
 
 <footer>
     <div class="footer-grid">
